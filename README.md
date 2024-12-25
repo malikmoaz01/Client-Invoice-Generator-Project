@@ -48,7 +48,7 @@ Make sure the following tools are installed on your system:
    ```
 
 4. **Open in Browser**:
-   Navigate to **[http://localhost:3000](http://localhost:3000)** to use the application.
+   Navigate to **[http://localhost:3000](http://localhost:5173/)** to use the application.
 
 ---
 
