@@ -48,7 +48,7 @@ Make sure the following tools are installed on your system:
    ```
 
 4. **Open in Browser**:
-   Navigate to **[http://localhost:3000](http://localhost:5173/)** to use the application.
+   Navigate to **[http://localhost:3000](http://localhost:5173)** to use the application.
 
 ---
 
@@ -92,12 +92,6 @@ Contributions are welcome! Follow these steps to contribute:
    git push origin feature-name
    ```
 5. **Submit a Pull Request** to the original repository.
-
----
-
-## **License**
-
-This project is licensed under the **MIT License**. See the **[LICENSE](LICENSE)** file for more details.
 
 ---
 
