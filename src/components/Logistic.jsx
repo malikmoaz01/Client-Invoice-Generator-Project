@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
-     
+
 const InvoiceGenerator = () => {
     const [entries, setEntries] = useState([]);
+
     const [newEntry, setNewEntry] = useState({
         sr: "",
         date: "",
@@ -15,30 +16,11 @@ const InvoiceGenerator = () => {
         rate: "",
         extraStop: "",
     });
+
     const [invoiceInfo, setInvoiceInfo] = useState({
         invoiceNumber: "483",
         date: "December 20, 2024",
     });
-
-    useEffect(() => {
-        const savedEntries = localStorage.getItem("entries");
-        const savedInvoiceInfo = localStorage.getItem("invoiceInfo");
-
-        if (savedEntries) {
-            setEntries(JSON.parse(savedEntries));
-        }
-        if (savedInvoiceInfo) {
-            setInvoiceInfo(JSON.parse(savedInvoiceInfo));
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem("entries", JSON.stringify(entries));
-    }, [entries]);
-
-    useEffect(() => {
-        localStorage.setItem("invoiceInfo", JSON.stringify(invoiceInfo));
-    }, [invoiceInfo]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -51,21 +33,15 @@ const InvoiceGenerator = () => {
     };
 
     const addEntry = () => {
-        const hasEmptyField = Object.values(newEntry).some((value) => value.trim() === "");
-        if (hasEmptyField) {
-            alert("All fields are required. Please fill out every field before adding an entry.");
-            return;
-        }
-
         const weight = parseFloat(newEntry.weight || 0);
         const rate = parseFloat(newEntry.rate || 0);
         const extraStop = parseFloat(newEntry.extraStop || 0);
 
         let totalAmount = weight * rate;
-
+        
         const isLahore = /^(lhr|lahore)$/i.test(newEntry.destination);
         if (isLahore) {
-            totalAmount += (totalAmount * 15) / 100;
+            totalAmount += (totalAmount * 15) / 100; 
         }
 
         const expenseAmount = Math.max(totalAmount - extraStop, 0);
@@ -122,8 +98,7 @@ const InvoiceGenerator = () => {
         });
 
         const headerInfo = [
-            ["HAMMAD & HUSSAIN GOODS TRANSPORT COMPANY®"],
-            [" "]
+            ["HAMMAD&HUSSAIN GOODS TRANSPORT COMPANY®"],
             ["Proprietor:", "NAVEED BUTT & AZHAR MALIK"],
             ["Address:", "OFFICE # 124 LASANI PLAZA NEW FRUIT MANDI LAHORE"],
             ["Account Title:", "HAMMAD&HUSSAIN GOODS TRANSPORT COMPANY"],
