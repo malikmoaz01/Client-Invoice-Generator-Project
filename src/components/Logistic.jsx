@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
-
+     
 const InvoiceGenerator = () => {
     const [entries, setEntries] = useState([]);
     const [newEntry, setNewEntry] = useState({
